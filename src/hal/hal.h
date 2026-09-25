@@ -149,6 +149,25 @@ public:
     void setButtonConfig(ButtonConfig config, bool saveToSettings = false);
     const ButtonConfig& getButtonConfig(bool loadFromSettings = false);
 
+    enum class HidTransport : uint8_t { Usb = 0, Bluetooth = 1 };
+    enum class HidState : uint8_t { Off, Waiting, Connected };
+    struct HidConfig {
+        HidTransport transport = HidTransport::Bluetooth;
+        bool airPointer        = true;
+        bool twistScroll       = true;
+        bool invertScroll      = false;
+        uint8_t pointerSpeed   = 1;  // 0 slow, 1 medium, 2 fast
+    };
+    // Starting USB takes the USB port over from the serial console until the next reboot
+    bool hidStart(HidTransport transport);
+    void hidStop();
+    HidState getHidState();
+    bool isUsbHidStarted();
+    bool hidSendMouse(uint8_t buttons, int8_t x, int8_t y, int8_t wheel, int8_t pan);
+    bool hidSendKeyboard(uint8_t modifiers, const std::array<uint8_t, 6>& keys);
+    void setHidConfig(HidConfig config, bool saveToSettings = false);
+    const HidConfig& getHidConfig(bool loadFromSettings = false);
+
     bool loadBadgeImage(lv_obj_t* image);
     bool loadNextBadgeImage(lv_obj_t* image);
     bool loadPreviousBadgeImage(lv_obj_t* image);
@@ -162,6 +181,7 @@ private:
     bool _ready = false;
     ImuData _imuData;
     ButtonConfig _buttonConfig;
+    HidConfig _hidConfig;
     AudioSpectrumFrame _audioSpectrum;
     int _brightness = 80;
     int _speakerVolume = 80;

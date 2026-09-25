@@ -18,6 +18,8 @@ LV_IMG_DECLARE(icon_indicator_right);
 LV_IMG_DECLARE(icon_clock);
 LV_IMG_DECLARE(icon_setup);
 LV_IMG_DECLARE(icon_imu);
+LV_IMG_DECLARE(icon_knob);
+LV_IMG_DECLARE(icon_air_mouse);
 LV_IMG_DECLARE(icon_fft);
 LV_IMG_DECLARE(icon_stopwatch);
 LV_IMG_DECLARE(icon_badge);

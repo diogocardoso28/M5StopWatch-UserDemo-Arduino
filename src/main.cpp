@@ -27,6 +27,8 @@ void installApps()
     GetMooncake().installApp(std::make_unique<AppStopWatch>());
     GetMooncake().installApp(std::make_unique<AppBadge>());
     GetMooncake().installApp(std::make_unique<AppImu>());
+    GetMooncake().installApp(std::make_unique<AppKnob>());
+    GetMooncake().installApp(std::make_unique<AppAirMouse>());
     GetMooncake().installApp(std::make_unique<AppFft>());
     GetMooncake().installApp(std::make_unique<AppLuckyWheel>());
     GetMooncake().installApp(std::make_unique<AppSetup>());
